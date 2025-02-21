@@ -1,54 +1,59 @@
-import React from 'react'
+import React from "react";
+import { useAuthContext } from "../../context/AuthContext";
+import { useConversationContext } from "../../context/ConversationContext";
+import { extractTime } from "../../utils/extractTime";
 
-const Message = () => {
+const Message = ({ message }: any) => {
+  const { authUser } = useAuthContext();
+  const { selectedConversation } = useConversationContext();
+
+  const fromMe = message.senderId === authUser?._id || false;
+  const formattedTime = extractTime(message.createdAt);
+  const shakeClass = message.shouldShake ? "shake" : ""; 
+
   return (
     <div>
       <div className="flex flex-col gap-4">
-  {/* Left (Incoming) Message */}
-  <div className="flex items-start gap-2">
-    <img
-      className="w-10 h-10 rounded-full"
-      src="https://imgv3.fotor.com/images/gallery/AI-3D-Female-Profile-Picture.jpg"
-      alt="Obi-Wan Avatar"
-    />
-    <div>
-      {/* Header (Name & Timestamp) */}
-      {/* <div className="text-sm text-gray-300">
-        Obi-Wan Kenobi <span className="text-xs opacity-50 ml-2">12:45</span>
-      </div> */}
-      {/* Chat Bubble */}
-      <div className="bg-gray-800 text-white px-4 py-2 rounded-lg max-w-xs">
-        You were the Chosen One!
+        {!fromMe ? (
+          <div className="flex items-start gap-2">
+            {" "}
+            {/* Left (Incoming) Message */}
+            <img
+              className="w-10 h-10 rounded-full"
+              src={selectedConversation?.profilePic}
+              alt="Obi-Wan Avatar"
+            />
+            <div>
+              {/* Chat Bubble */}
+              <div className={`bg-gray-800 text-white px-4 py-2 rounded-lg max-w-x ${shakeClass}`}>
+                {message?.message}
+              </div>
+              {/* Footer (Status) */}
+              <div className="text-xs opacity-50">{formattedTime}</div>
+            </div>
+          </div>
+        ) : (
+          <div className="flex items-start gap-2 justify-end">
+            {" "}
+            {/* Right (Outgoing) Message */}
+            <div className="text-right">
+              {/* Chat Bubble */}
+              <div className="bg-blue-600 text-white px-4 py-2 rounded-lg max-w-xs">
+                {message?.message}
+              </div>
+              {/* Footer (Seen Status) */}
+              <div className="text-xs opacity-50">{formattedTime}</div>
+            </div>
+            <img
+              className="w-10 h-10 rounded-full"
+              src={authUser?.profilePic}
+              alt="Avatar"
+            />
+          </div>
+        )}
       </div>
-      {/* Footer (Status) */}
-      <div className="text-xs opacity-50">Delivered</div>
     </div>
-  </div>
+  );
+};
 
-  {/* Right (Outgoing) Message */}
-  <div className="flex items-start gap-2 justify-end">
-    <div className="text-right">
-      {/* Header (Name & Timestamp) */}
-      {/* <div className="text-sm text-gray-300">
-        Anakin <span className="text-xs opacity-50 ml-2">12:46</span>
-      </div> */}
-      {/* Chat Bubble */}
-      <div className="bg-blue-600 text-white px-4 py-2 rounded-lg max-w-xs">
-        I hate you!
-      </div>
-      {/* Footer (Seen Status) */}
-      <div className="text-xs opacity-50">Seen at 12:46</div>
-    </div>
-    <img
-      className="w-10 h-10 rounded-full"
-      src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-      alt="Anakin Avatar"
-    />
-  </div>
-</div>
-
-    </div>
-  )
-}
-
-export default Message
+export default Message;

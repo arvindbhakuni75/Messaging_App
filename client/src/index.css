@@ -2,49 +2,56 @@
 
 
 body {
-    background: linear-gradient(rgb(0, 0, 0, 0.2), rgb(0, 0, 0, 0.2)), url("/bg.png");
-    background-repeat: no-repeat;
-    background-size: cover; 
-    background-position: center;
-    background-attachment: fixed;
-    color: rgb(184, 181, 181)
+  background: linear-gradient(rgb(0, 0, 0, 0.2), rgb(0, 0, 0, 0.2)), url("/bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: rgb(184, 181, 181)
 }
 
 
 input[type="checkbox"] {
-    -webkit-appearance: none; /* Remove default browser styling */
-    -moz-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border: 1px solid #4a5568; /* Dark gray border */
-    border-radius: 4px; /* Optional: Rounded corners */
-    background-color: transparent; /* Default unchecked background */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-color: black;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
-  
-  /* Show white checkmark when checked */
-  input[type="checkbox"]:checked {
-    background-color: rgb(27, 27, 27); /* Gray background when checked */
-    border-color: black;
-    position: relative;
-  }
-  
-  input[type="checkbox"]:checked::after {
-    content: "✔"; /* Unicode checkmark */
-    color: white; /* White checkmark */
-    font-size: 16px;
-    font-weight: bold;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
+  -webkit-appearance: none;
+  /* Remove default browser styling */
+  -moz-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #4a5568;
+  /* Dark gray border */
+  border-radius: 4px;
+  /* Optional: Rounded corners */
+  background-color: transparent;
+  /* Default unchecked background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-color: black;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Show white checkmark when checked */
+input[type="checkbox"]:checked {
+  background-color: rgb(27, 27, 27);
+  /* Gray background when checked */
+  border-color: black;
+  position: relative;
+}
+
+input[type="checkbox"]:checked::after {
+  content: "✔";
+  /* Unicode checkmark */
+  color: white;
+  /* White checkmark */
+  font-size: 16px;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 
 /* dark mood looking scroll bar  */
 ::-webkit-scrollbar {
@@ -52,50 +59,46 @@ input[type="checkbox"] {
 }
 
 ::-webkit-scrollbar-track {
-  /* background: #555; */
   background: #272626;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-  /* background: #121212; */
   background: #217df5;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  /* background: #242424; */
   background: #514eff;
 }
 
 
+/* SHAKE ANIMATION TO HORIZONTAL DIRECTION  */
 
-
-  /* Apply smooth scrolling */
-/* html {
-  scroll-behavior: smooth;
+.shake {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) 0.2s both;
+  will-change: transform;
 }
 
-*::-webkit-scrollbar {
-  width: 8px;
+@keyframes shake {
+
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
-
-*::-webkit-scrollbar-track {
-  background: #474747;
-  border-radius: 50%;
-}
-
-*::-webkit-scrollbar-thumb {
-  background: linear-gradient(45deg, #a937f5, #fad0c4);
-  border-radius: 10px;
-}
-
-*::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(45deg, #a937f5, #ff7eb3);
-}
-
-
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #217df5 #272626;
-} */

@@ -1,5 +1,3 @@
-import React from "react";
-
 import { ConversationContextProvider } from "../../context/ConversationContext";
 import Sidebar from "../../components/sidebar/Sidebar";
 import MessageContainer from "../../components/messages/MessageContainer";

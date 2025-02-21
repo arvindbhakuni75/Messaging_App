@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { useAuthContext } from "../context/AuthContext";
 
 const useLogin = () => {
-  const { authUser, setAuthUser } = useAuthContext();
+  const { setAuthUser } = useAuthContext();
 
   const [loading, setLoading] = React.useState<boolean>(false);
 
@@ -33,8 +33,6 @@ const useLogin = () => {
 
       localStorage.setItem("app_user", JSON.stringify(data));
       setAuthUser(data);
-
-      
     } catch (error: any) {
       toast.error("Invalid username or password. Please try again.");
     } finally {

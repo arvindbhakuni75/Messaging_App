@@ -1,4 +1,3 @@
-import React from "react";
 import Conversation from "./Conversation";
 import useGetConversations from "../../hooks/useGetConversations";
 import { getRandomEmoji } from "../../utils/emojis";
@@ -6,11 +5,10 @@ import Loader from "../Loader";
 
 const Conversations = () => {
   const { loading, conversations } = useGetConversations();
-  
+
   return (
     <div className="py-2 flex flex-col overflow-auto sm:h-[310px] md:h-[410px] mb-2 overflow-y-auto">
-
-      { loading && <Loader />}
+      {loading && <Loader />}
 
       {conversations?.map((conversation: any, ind: number) => (
         <Conversation

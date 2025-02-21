@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 
 import { SignupInputTypes } from "../pages/signup/Signup";
@@ -45,11 +45,10 @@ const useSignup = () => {
         throw new Error(data.error);
       }
 
-      // localstorage 
+      // localstorage
       localStorage.setItem("app_user", JSON.stringify(data));
       // context
       setAuthUser(data);
-
     } catch (error: any) {
       toast.error(error.message);
     } finally {

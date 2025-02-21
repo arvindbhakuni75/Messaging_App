@@ -1,4 +1,3 @@
-import React from "react";
 import { useConversationContext } from "../../context/ConversationContext";
 import { useSocketContext } from "../../context/SocketContext";
 interface ConversationPropType {

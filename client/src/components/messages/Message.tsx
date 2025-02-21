@@ -1,4 +1,3 @@
-import React from "react";
 import { useAuthContext } from "../../context/AuthContext";
 import { useConversationContext } from "../../context/ConversationContext";
 import { extractTime } from "../../utils/extractTime";
@@ -9,7 +8,7 @@ const Message = ({ message }: any) => {
 
   const fromMe = message.senderId === authUser?._id || false;
   const formattedTime = extractTime(message.createdAt);
-  const shakeClass = message.shouldShake ? "shake" : ""; 
+  const shakeClass = message.shouldShake ? "shake" : "";
 
   return (
     <div>
@@ -25,7 +24,9 @@ const Message = ({ message }: any) => {
             />
             <div>
               {/* Chat Bubble */}
-              <div className={`bg-gray-800 text-white px-4 py-2 rounded-lg max-w-x ${shakeClass}`}>
+              <div
+                className={`bg-gray-800 text-white px-4 py-2 rounded-lg max-w-x ${shakeClass}`}
+              >
                 {message?.message}
               </div>
               {/* Footer (Status) */}

@@ -23,7 +23,7 @@ export const SocketContextProvider = ({
 
   useEffect(() => {
     if (authUser) {
-      const newSocket = io("http://localhost:8000", {
+      const newSocket = io("https://mern-chat-app-prod-ppj7.onrender.com", {
         query: {
           userId: authUser._id,
         },
